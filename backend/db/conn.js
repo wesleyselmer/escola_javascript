@@ -4,10 +4,13 @@ async function main(){
 
     try{
         mongoose.set("strictQuery", true);
-       
-        await mongoose.connect(
-            "mongodb+srv://wesleyselmer:6YFxISg4IE03ptnJ@cluster0.hacuije.mongodb.net/"
-        );
+
+        const user = process.env.DB_USER;
+        const pass = process.env.DB_PASS;
+        const host = process.env.DB_HOST;
+        const connString = `mongodb+srv://${user}:${pass}@${host}`;
+        
+        await mongoose.connect(connString);
 
         console.log("Conectado ao banco!");
 

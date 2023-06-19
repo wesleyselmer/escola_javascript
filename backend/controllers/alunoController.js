@@ -1,4 +1,4 @@
-const {Aluno: AlunoModel} = require("../models/Aluno");
+const AlunoModel = require("../models/Aluno");
 
 const alunoController = {
     create: async(req, res) => {
@@ -10,6 +10,10 @@ const alunoController = {
                 turno   : req.body.turno,
                 escola  : req.body.escola,
             };
+
+            if(aluno.escola) {
+                
+            }
 
             const response = await AlunoModel.create(aluno);
 

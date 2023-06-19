@@ -30,15 +30,47 @@ const escolaController = {
             const escola = await EscolaModel.findById(id)
 
             if(!escola) {
-                res.status(404).json({msg: "Serviço não encontrado"});
+                res.status(404).json({msg: "Escola não encontrada"});
                 return
             }
             
             res.json(escola);
 
         } catch (error) {
-            
+            console.log(error)
         }
+    },
+    delete: async(req, res) => {
+        try {
+            const id = req.params.id;
+
+            const escola = await EscolaModel.findById(id);
+            if(!escola) {
+                res.status(404).json({msg: "Escola não encontrada"});
+                return
+            }
+
+            const deletedEscola = await EscolaModel.findByIdAndDelete(id);
+
+            res.status(200).json({deletedEscola, msg: "Escola excluída com sucesso!"})
+        } catch (error) {
+            console.log(error)
+        }
+    },
+    update: async(req, res) => {
+        const id = req.params.id;
+        const escola = {
+            nome : req.body.nome,
+        };
+
+        const updatedEscola = await EscolaModel.findByIdAndUpdate(id, escola);
+
+        if(!updatedEscola) {
+            res.status(404).json({msg: "Escola não encontrada."});
+            return;
+        }
+
+        res.status(200).json({escola, msg: "Escola atualizada com sucesso."});
     }
     
 
