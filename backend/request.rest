@@ -20,3 +20,36 @@ Content-Type: application/json
 {
     "nome"      : "Positivo"
 }
+
+###
+POST http://localhost:3000/api/alunos
+Content-Type: application/json
+
+{
+    "nome"      : "Wesley Selmer",
+    "cpf"       : "111",
+    "turma"     : "1",
+    "turno"     : "noite",
+    "escola"    : [{"nome": "Dom Bosco"}]
+}
+
+###
+GET http://localhost:3000/api/alunos
+
+###
+GET http://localhost:3000/api/alunos/64907d6574ab5950d4886bda
+
+###
+DELETE http://localhost:3000/api/alunos/64907d3d74ab5950d4886bd8
+
+###
+PUT http://localhost:3000/api/alunos/64907d6574ab5950d4886bda
+Content-Type: application/json
+
+{
+    "nome"      : "Wesley Selmer",
+    "cpf"       : "112",
+    "turma"     : "1",
+    "turno"     : "noite",
+    "escola"    : [{"nome": "Dom Bosco"}]
+}
