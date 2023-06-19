@@ -1,0 +1,11 @@
+POST http://localhost:3000/api/escolas
+Content-Type: application/json
+
+{
+    "nome"      : "Positivo"
+}
+###
+GET http://localhost:3000/api/escolas
+
+###
+GET http://localhost:3000/api/escolas/648f184178016c6755a698b4
